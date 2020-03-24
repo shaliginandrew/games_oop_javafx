@@ -83,6 +83,7 @@ public class Logic {
             }
             if (horizontal|| vertical) {
                 result = true;
+                break;
             }
         }
         return result;
