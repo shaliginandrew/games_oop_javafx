@@ -77,13 +77,15 @@ public class Logic {
         for (int cell = 0; cell < table.length; cell++) {
             horizontal = true;
             vertical = true;
-            for (int row = 0; row < table.length; row++) {
-                horizontal &= (table[cell][row] == 1);
-                vertical &= (table[row][cell] == 1);
-            }
-            if (horizontal|| vertical) {
-                result = true;
-                break;
+            if(table[cell][cell] == 1) {
+                for (int row = 0; row < table.length; row++) {
+                    horizontal &= (table[cell][row] == 1);
+                    vertical &= (table[row][cell] == 1);
+                }
+                if (horizontal || vertical) {
+                    result = true;
+                    break;
+                }
             }
         }
         return result;
