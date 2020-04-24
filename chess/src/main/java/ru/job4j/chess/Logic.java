@@ -21,18 +21,30 @@ public class Logic {
         this.figures[this.index++] = figure;
     }
 
-    public boolean move(Cell source, Cell dest) {
+
+    boolean isWayFree(Cell[] way, Cell source, Cell dest) {
         boolean rst = false;
-        int index = this.findBy(source);
-        if (index != -1) {
-            Cell[] steps = this.figures[index].way(source, dest);
-            if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
-                rst = true;
-                this.figures[index] = this.figures[index].copy(dest);
-            }
+        Cell[] steps = this.figures[index].way(source, dest);
+        if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
+             rst = true;
         }
         return rst;
     }
+
+    public boolean move(Cell source, Cell dest) {
+        try {
+            //isDiagonal(source, dest);// не понимаю, что должно быть в try?
+        } catch (IllegalStateException my) {
+        }
+        boolean rst = false;
+        int index = this.findBy(source);
+        if (index != -1 && isWayFree() == true) {  // не понимаю что в скобочках писать
+            this.figures[index] = this.figures[index].copy(dest);
+            }
+        return rst;
+        }
+
+
 
     public void clean() {
         for (int position = 0; position != this.figures.length; position++) {

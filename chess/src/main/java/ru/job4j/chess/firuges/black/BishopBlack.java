@@ -19,50 +19,33 @@ public class BishopBlack implements Figure {
 
     @Override
     public Cell[] way(Cell source, Cell dest) {
-        if (!isDiagonal(source, dest)) {
+        try {
+            isDiagonal(source, dest);
+        } catch (IllegalStateException my) {
+        }
+        int size = (source.x - dest.x > 0) ? source.x - dest.x : (source.x - dest.x) * -1;
+        Cell[] steps = new Cell[size];
+        int deltaX = (source.x - dest.x > 0) ? -1 : 1;
+        int deltaY = (source.y - dest.y > 0) ? -1 : 1;
+        for (int index = 0; index < size; index++) {
+            steps[index] = Cell.findBy(source.x + deltaX * (index + 1), source.y + deltaY * (index + 1));
+        }
+        return steps;
+    }
+
+    public boolean isDiagonal(Cell source, Cell dest) {
+        boolean answer = false;
+        int x = (source.x - dest.x > 0) ? source.x - dest.x : (source.x - dest.x) * -1;
+        int y = (source.y - dest.y > 0) ? source.y - dest.y : (source.y - dest.y) * -1;
+        if (x == y) {
+            answer = true;
+        }
+        if (!answer) {
             throw new IllegalStateException(
                     String.format("Could not way by diagonal from %s to %s", source, dest)
             );
         }
-        int size = 10, count = 0;
-        Cell[] steps = new Cell[size];
-        int deltaX = source.x;
-        int deltaY = source.y;
-        for (int index = 0; index < size; index++) {
-            if (source.x < dest.x) {
-                deltaX++;
-            } else deltaX--;
-            if (source.y < dest.y) {
-                deltaY++;
-            } else deltaY--;
-            for (Cell cell : Cell.values()) {
-                if (deltaX == cell.x && deltaY == cell.y) {
-                    steps[index] = cell;
-                    count++;
-                    break;
-                }
-            }
-        }
-        return Arrays.copyOf(steps, count);
-    }
-
-    public boolean isDiagonal(Cell source, Cell dest) {
-        int deltaX = source.x;
-        int deltaY = source.y;
-        boolean result = false;
-        for (int index = 0; index <= 10; index++) {
-            if (source.x < dest.x) {
-                deltaX++;
-            } else deltaX--;
-            if (source.y < dest.y) {
-                deltaY++;
-            } else deltaY--;
-            if (deltaX == dest.x && deltaY == dest.y) {
-                result = true;
-                break;
-            }
-        }
-        return result;
+        return answer;
     }
 
     @Override
