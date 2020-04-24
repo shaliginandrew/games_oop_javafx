@@ -38,9 +38,9 @@ public class Logic {
         }
         boolean rst = false;
         int index = this.findBy(source);
-        if (index != -1 && isWayFree() == true) {  // не понимаю что в скобочках писать
-            this.figures[index] = this.figures[index].copy(dest);
-            }
+        //if (index != -1 && isWayFree() == true) {  // не понимаю что в скобочках писать
+          //  this.figures[index] = this.figures[index].copy(dest);
+            //}
         return rst;
         }
 
