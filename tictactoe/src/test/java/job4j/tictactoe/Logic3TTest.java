@@ -20,6 +20,7 @@ public class Logic3TTest {
     }
 
 
+
     @Test
     public void whenNotFill() {
         Figure3T[][] table = {
