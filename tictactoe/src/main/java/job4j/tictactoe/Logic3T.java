@@ -1,6 +1,9 @@
 package job4j.tictactoe;
 
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 public class Logic3T {
     private final Figure3T[][] table;
@@ -23,21 +26,24 @@ public class Logic3T {
         return result;
     }
 
+    public boolean isWinnerXandO(Predicate<Figure3T> hasMark) {
+        return this.fillBy(hasMark, 0, 0, 1, 0) ||
+        this.fillBy(hasMark, 0, 0, 0, 1) ||
+        this.fillBy(hasMark, 0,0, 1, 1) ||
+        this.fillBy(hasMark, this.table.length - 1 , 0, -1, 1);
+
+    }
+
     public boolean isWinnerX() {
-        return this.fillBy(Figure3T::hasMarkX, 0, 0, 1, 0) ||
-                this.fillBy(Figure3T::hasMarkX, 0, 0, 0, 1) ||
-                this.fillBy(Figure3T::hasMarkX, 0,0, 1, 1) ||
-                this.fillBy(Figure3T::hasMarkX, this.table.length - 1 , 0, -1, 1);
+        return isWinnerXandO(Figure3T::hasMarkX);
     }
 
     public boolean isWinnerO() {
-        return this.fillBy(Figure3T::hasMarkO, 0, 0, 1, 0) ||
-                this.fillBy(Figure3T::hasMarkO, 0, 0, 0, 1) ||
-                this.fillBy(Figure3T::hasMarkO, 0,0, 1, 1) ||
-                this.fillBy(Figure3T::hasMarkO, this.table.length - 1, 0, -1, 1);
+
+        return isWinnerXandO(Figure3T::hasMarkO);
     }
 
     public boolean hasGap() {
-        return true;
+        return Arrays.stream(table).flatMap().anyMatch();
     }
 }
