@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
 
 @Ignore
 public class Logic3TTest {
-/*
+
     @Test
     public void whenHasXWinner() {
         Figure3T[][] table = {
@@ -34,7 +34,7 @@ public class Logic3TTest {
     }
 
     @Test
-    public void whenHasXHorizontalWinner() {
+    public void whenHasXHorizontalWinner() { // не работает
         Figure3T[][] table = {
                 {new Figure3T(), new Figure3T(), new Figure3T()},
                 {new Figure3T(true, false), new Figure3T(true, false), new Figure3T(true, false)},
@@ -45,7 +45,7 @@ public class Logic3TTest {
     }
 
     @Test
-    public void whenHasXVerticalWinner() {
+    public void whenHasXVerticalWinner() { // не работает
         Figure3T[][] table = {
                 {new Figure3T(), new Figure3T(true, false), new Figure3T()},
                 {new Figure3T(), new Figure3T(true, false), new Figure3T()},
@@ -67,7 +67,7 @@ public class Logic3TTest {
     }
 
     @Test
-    public void whenHasOWinner() {
+    public void whenHasOWinner() { //  не работает
         Figure3T[][] table = {
                 {new Figure3T(true, false), new Figure3T(), new Figure3T()},
                 {new Figure3T(true, false), new Figure3T(true, false), new Figure3T()},
@@ -87,6 +87,4 @@ public class Logic3TTest {
         Logic3T login = new Logic3T(table);
         assertThat(login.hasGap(), is(true));
     }
-    */
-
 }
