@@ -28,8 +28,12 @@ public class Logic3T {
 
     public boolean isWinnerXandO(Predicate<Figure3T> hasMark) {
         return this.fillBy(hasMark, 0, 0, 1, 0) ||
-        this.fillBy(hasMark, 0, 0, 0, 1) ||
-        this.fillBy(hasMark, 0,0, 1, 1) ||
+                this.fillBy(hasMark, 0, 1, 1, 0) ||
+                this.fillBy(hasMark, 0, 2, 1, 0) ||
+                this.fillBy(hasMark, 0, 0, 0, 1) ||
+                this.fillBy(hasMark, 1, 0, 0, 1) ||
+                this.fillBy(hasMark, 2, 0, 0, 1) ||
+                this.fillBy(hasMark, 0,0, 1, 1) ||
         this.fillBy(hasMark, this.table.length - 1 , 0, -1, 1);
 
     }

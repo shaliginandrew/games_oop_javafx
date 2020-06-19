@@ -34,7 +34,7 @@ public class Logic3TTest {
     }
 
     @Test
-    public void whenHasXHorizontalWinner() { // не работает
+    public void whenHasXHorizontalWinner() {
         Figure3T[][] table = {
                 {new Figure3T(), new Figure3T(), new Figure3T()},
                 {new Figure3T(true, false), new Figure3T(true, false), new Figure3T(true, false)},
@@ -45,7 +45,7 @@ public class Logic3TTest {
     }
 
     @Test
-    public void whenHasXVerticalWinner() { // не работает
+    public void whenHasXVerticalWinner() {
         Figure3T[][] table = {
                 {new Figure3T(), new Figure3T(true, false), new Figure3T()},
                 {new Figure3T(), new Figure3T(true, false), new Figure3T()},
